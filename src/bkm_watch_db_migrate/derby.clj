@@ -10,7 +10,9 @@
 (def table "ALERT_RECORD")
 
 (defn all-results [db table]
-  (j/query db [(str "select * from " table " ")]))
+  (j/query db [(str "select * from " table " order by DATE asc")]))
 
 (defn get-old-alerts []
   (all-results db-info table))
+
+(get-old-alerts)
