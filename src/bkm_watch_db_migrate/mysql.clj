@@ -6,12 +6,22 @@
 
 ;;  CONFIGURATION
 
-(def db {
+(def db-spec {
          :subprotocol "mysql"
          :subname "//localhost:3306/bkmwatch"
          :user "bkmwatch"
          :password "bkmwatch"
          :debug true})
+
+(defn pool
+  [spec]
+  (let [cpds (doto (com.zaxxer.hikari.HikariDataSource.)
+               (.setJdbcUrl (str "jdbc:" (:subprotocol spec) ":" (:subname spec)))
+               (.setUsername (:user spec))
+               (.setPassword (:password spec)))]
+    {:datasource cpds :debug (:debug spec)}))
+
+(def db (pool db-spec))
 
 ;; DDL
 
