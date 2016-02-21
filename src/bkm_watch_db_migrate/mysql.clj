@@ -71,6 +71,11 @@
 (defn get-alerts []
   (j/query db ["select * from alert"]))
 
+(defn get-latest-alerts [limit page]
+  (println "retrieving latest" limit "alerts, page" page)
+  (let [start (* limit page)]
+    (j/query db ["select * from alert order by date DESC LIMIT ?, ?" start limit])))
+
 ;; SOME TEST STUFF
 
 (defn test-db []
