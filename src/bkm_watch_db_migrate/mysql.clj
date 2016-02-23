@@ -76,6 +76,13 @@
   (let [start (* limit page)]
     (j/query db ["select * from alert order by date DESC LIMIT ?, ?" start limit])))
 
+(defn like [q limit page]
+  (println "searching for:" q "page:" page)
+  (let [query (str "select * from alert where message like ? "
+                   "order by date desc "
+                   "limit ?, ?")]
+    (j/query db [query (str "%" q "%") (* limit page) limit])))
+
 ;; SOME TEST STUFF
 
 (defn test-db []
