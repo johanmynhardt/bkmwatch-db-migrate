@@ -10,3 +10,7 @@ pom.xml.asc
 .hgignore
 .hg/
 local/
+polymer/dist/
+polymer/bower_components/
+polymer/node/
+polymer/node_modules/

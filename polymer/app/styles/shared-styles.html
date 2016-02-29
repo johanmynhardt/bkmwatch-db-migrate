@@ -1,0 +1,53 @@
+<!-- shared styles for all elements and index.html -->
+<dom-module id="shared-styles">
+  <template>
+    <style>
+      .page-title {
+        @apply(--paper-font-display2);
+      }
+
+      paper-menu a > *, paper-menu paper-item > *, paper-menu paper-icon-item > * {
+        pointer-events: none;
+      }
+
+      @media (max-width: 600px) {
+        .page-title {
+          font-size: 24px!important;
+        }
+      }
+
+      .block-with-margin {
+        display: block;
+        background-color: none;
+        margin-bottom: 0.5em;
+      }
+
+      /*.avatar {
+        display: inline-block;
+        height: 64px;
+        width: 64px;
+        border-radius: 50%;
+        background: var(--paper-pink-500);
+        color: white;
+        line-height: 64px;
+        font-size: 30px;
+        text-align: center;
+      }*/
+
+      .title {
+        display: block;
+        padding: 0.5em;
+      }
+
+      .title .medium {
+        font-weight: bold;
+        font-size: larger;
+      }
+
+      .title .small {
+        font-size: smaller;
+        font-style: italic;
+      }
+    </style>
+  </template>
+</dom-module>

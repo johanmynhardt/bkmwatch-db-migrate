@@ -83,6 +83,14 @@
                    "limit ?, ?")]
     (j/query db [query (str "%" q "%") (* limit page) limit])))
 
+(defn total-alerts []
+  (j/query db ["select count (*) as count from alert"]))
+
+(defn total-alerts-by-month [year month]
+  (let [start (str "'" year "-" month "-01'")
+        end (j/query db [(str "select date_add('" start "', interval 1 month)")])]
+    (j/query db ["select count (*) from alert where date between ? and ?" start end])))
+
 ;; SOME TEST STUFF
 
 (defn test-db []

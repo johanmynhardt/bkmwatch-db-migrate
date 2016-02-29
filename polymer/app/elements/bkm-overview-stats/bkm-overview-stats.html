@@ -1,0 +1,43 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="bkm-overview-stats">
+
+<template>
+<div class="vertical layout">
+  <paper-card heading="Stats Overview"></paper-card>
+
+    <iron-ajax id="ajaxSearch"
+      method="get"
+      handle-as="json"
+      content-type="application/json"
+      url="http://localhost:3000/data/stats"
+      last-response="{{items}}"
+    auto></iron-ajax>
+
+  <template is="dom-repeat" items="[[items]]">
+    <paper-card heading="[[item.heading]]">
+      <div class="card-content">[[item.content]]</div>
+    </paper-card>
+  </template>
+</div>
+</template>
+
+<script>
+
+(function() {
+  'use strict';
+
+  Polymer({
+    is: 'bkm-overview-stats',
+    properties: {
+      items: {
+        type: Array,
+        value: [{heading: '', content: '(none)'}]
+      }
+    }
+  });
+})();
+
+</script>
+
+</dom-module>
